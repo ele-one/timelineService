@@ -21,7 +21,7 @@ COPY . /timelineService
 # Note the above 'COPY . /timelineService' could be achieved using relative path '.', since we are already in the timelineService as we did WORKDIR above and did not change path after that.
 # COPY . .
 
-CMD ["npm", "react-dev"]
+CMD ["npm", "client"]
 CMD [ "npm", "start"]
 
 
