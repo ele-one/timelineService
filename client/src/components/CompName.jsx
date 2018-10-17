@@ -1,8 +1,7 @@
 import React from 'react';
-import ListServiceItems from './ListServiceItems.jsx'
+const chart = require('chart.js');
 
-
-const ListServices = (props) => (
+const CompName = (props) => (
   <div>
     <h4> Services </h4>
     Total number of services:  { props.services.length }
@@ -14,4 +13,4 @@ const ListServices = (props) => (
 
 
 
-export default ListServices;
+export default CompName;
