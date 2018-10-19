@@ -14,6 +14,7 @@ class App extends React.Component {
 
   render () {
     return (<div>
+      <p> Case Timeline </p>
       <CaseTimeline />
     </div>)
   }
