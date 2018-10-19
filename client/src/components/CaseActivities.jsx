@@ -16,10 +16,6 @@ export default class BarChartComponent extends Component {
   }
 
 
-// {"caseName": "hello", "fromValue": "abc", "toValue":"0.0.0.0", "iocType":"ip"}
-
-// {"caseName": "hello", "iocToDelete": "abc"}
-
   caseActivitiesDataParser(data) {
 
     data = JSON.parse(data);
@@ -46,8 +42,6 @@ export default class BarChartComponent extends Component {
           } else {
             createdIOCCountsForCases[caseName] = 1
           }
-        } else {
-          createdIOCCountsForCases[caseName] = 0
         }
 
         if (diffOperationKey === "modifiedIOC") {
@@ -56,8 +50,6 @@ export default class BarChartComponent extends Component {
           } else {
             updatedIOCCountsForCases[caseName] = 1
           }
-        } else {
-          updatedIOCCountsForCases[caseName] = 0
         }
 
 
@@ -67,22 +59,15 @@ export default class BarChartComponent extends Component {
           } else {
             deletedIOCCountsForCases[caseName] = 1
           }
-        } else {
-          deletedIOCCountsForCases[caseName] = 0
         }
       }
     }
-
-
-    debugger
 
     this.setState({
       createdIOCCountsForCases: createdIOCCountsForCases,
       updatedIOCCountsForCases: updatedIOCCountsForCases,
       deletedIOCCountsForCases: updatedIOCCountsForCases
     })
-
-
 
   }
 
@@ -93,18 +78,29 @@ export default class BarChartComponent extends Component {
       url: '/getCaseActivities',
       method: 'GET',
       success: (data) => {
-        debugger;
+        // debugger;
         this.caseActivitiesDataParser(data);
       },
 
       error: (err) => {
-        debugger
+        // debugger
+        console.log(err);
       }
-      });
-    }
+    });
+  }
 
 
   render() {
+
+    const options={
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
 
      const data = {
       labels: Object.keys(this.state.createdIOCCountsForCases),
@@ -141,48 +137,13 @@ export default class BarChartComponent extends Component {
       ]
     };
 
-    // const data = {
-    //   labels: ['APT100', 'APT120', 'APT655'],
-    //   datasets: [
-    //     {
-    //       label: 'Create',
-    //       backgroundColor: 'rgba(13,255,178,0.2)',
-    //       borderColor: 'rgba(13,255,178,1)',
-    //       borderWidth: 1,
-    //       hoverBackgroundColor: 'rgba(13,255,178,0.4)',
-    //       hoverBorderColor: 'rgba(13,255,178,1)',
-    //       data: [65, 59, 80]
-    //     },
-    //     {
-    //       label: 'Delete',
-    //       backgroundColor: 'rgba(255,99,132,0.2)',
-    //       borderColor: 'rgba(255,99,132,1)',
-    //       borderWidth: 1,
-    //       hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-    //       hoverBorderColor: 'rgba(255,99,132,1)',
-    //       data:  [81, 56, 55]
-    //     },
-
-    //     {
-    //       label: 'Update',
-    //       backgroundColor: 'rgba(67,60,224,0.2)',
-    //       borderColor: 'rgba(67,60,224,1)',
-    //       borderWidth: 1,
-    //       hoverBackgroundColor: 'rgba(67,60,224,0.4)',
-    //       hoverBorderColor: 'rgba(67,60,224,1)',
-    //       data: [40,12,23]
-    //     },
-
-    //   ]
-    // };
-
       return(
          <div>
             <Bar
               data={data}
+              options={options}
               width={100}
-              height={50}
-            />
+              height={50} />
          </div>
       )
    }
