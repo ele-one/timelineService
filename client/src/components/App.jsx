@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import Chart1 from './Chart1.jsx'
+import CaseActivities from './CaseActivities.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -11,15 +11,11 @@ class App extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   $.ajax({
-  //     });
-  // }
 
   render () {
 
     return (<div>
-      <Chart1 />
+      <CaseActivities id="chart1" />
     </div>)
   }
 }
