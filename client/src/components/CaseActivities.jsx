@@ -69,6 +69,7 @@ export default class BarChartComponent extends Component {
       deletedIOCCountsForCases: updatedIOCCountsForCases
     })
 
+    debugger
   }
 
 
@@ -78,12 +79,12 @@ export default class BarChartComponent extends Component {
       url: '/getCaseActivities',
       method: 'GET',
       success: (data) => {
-        // debugger;
+        debugger;
         this.caseActivitiesDataParser(data);
       },
 
       error: (err) => {
-        // debugger
+        debugger
         console.log(err);
       }
     });
@@ -104,6 +105,7 @@ export default class BarChartComponent extends Component {
 
      const data = {
       labels: Object.keys(this.state.createdIOCCountsForCases),
+      backgroundColor: "white",
       datasets: [
         {
           label: 'Create',
@@ -142,8 +144,8 @@ export default class BarChartComponent extends Component {
             <Bar
               data={data}
               options={options}
-              width={100}
-              height={50} />
+              width={10}
+              height={3} />
          </div>
       )
    }
