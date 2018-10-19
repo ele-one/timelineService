@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import $ from 'jquery';
+import CaseActivities from './CaseActivities.jsx'
 import CaseTimeline from './CaseTimeline.jsx'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +16,8 @@ class App extends React.Component {
 
   render () {
     return (<div>
+      <p> Case Activities</p>
+      <CaseActivities id="chart1" />
       <p> Case Timeline </p>
       <CaseTimeline />
     </div>)
