@@ -1,4 +1,9 @@
-p {
+p, h2 {
   font-family: 'Quicksand', sans-serif;
-  color: #d0d9e1;
+  /*color: #d0d9e1;*/
 }
+
+
+/*body {
+  background: #381E05
+}*/
